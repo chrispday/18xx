@@ -7,11 +7,17 @@ export class Tile {
     Tracks: Track[];
     Name?: string; // eg. Z, Chicago
 
-    Rotate(): Tile {
-        return {
-            ...this as any, 
-            Tracks: this.Tracks.map(t => t.Rotate())
-        };
+    Rotate(rotations: number = 1): Tile {
+        let rotatedTracks = [...this.Tracks];
+        while (0 < rotations--) {
+            rotatedTracks = rotatedTracks.map(t => t.Rotate());
+        }
+
+        return { ...this as any, Tracks: rotatedTracks };
+    }
+
+    AllRotations(): Tile[] {
+        return [0, 1,2,3,4,5].map(i => this.Rotate(i));
     }
     
     CanUpgrade(upgradeTo: Tile): boolean {
@@ -23,13 +29,17 @@ export class Tile {
             return false;
         }
 
-        if (!this.CanUpgradeForExits(upgradeTo)) {
+        if (0 != this.PossibleUpgradeRotations(upgradeTo).length) {
             return false;
         }
     }
 
-    CanUpgradeForExits(upgradeTo: Tile): boolean {
+    PossibleUpgradeRotations(upgradeTo: Tile): Tile[] {
+        return upgradeTo.AllRotations().filter(t => this.HasSameExits(t));       
+    }
 
+    HasSameExits(compareTo: Tile): boolean {
+        this.Tracks.every(t => t.HasSameExits(compareTo.Tracks));
     }
 
     CanUpgradeColour(upgradeTo: Tile): boolean {

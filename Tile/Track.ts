@@ -11,4 +11,8 @@ export class Track {
             Exits: this.Exits.Rotate()
         };
     }
+
+    HasSameExits(compareTo: Track[]): boolean {
+        return compareTo.some(t => this.Exits.HasSame(t.Exits));
+    }
 }

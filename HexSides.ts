@@ -17,4 +17,8 @@ export class HexSides<T> {
             RightTop: this.Top
         };
     }
+
+    HasSame(item: HexSides<T>): boolean {
+        if (this.Top !== undefined || this.Top !== null)
+    }
 }
