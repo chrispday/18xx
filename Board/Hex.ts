@@ -9,6 +9,8 @@ export class Hex {
     Blocked: HexSides<boolean>; // Exits can't be on these sides
     Row: string;
     Column: string;
+    Cost: number;
+    ExitCosts: HexSides<number>;
 
     CanUpgrade(upgradeTo: Tile): boolean {
         return this.Tile.CanUpgrade(upgradeTo);

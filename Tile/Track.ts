@@ -1,4 +1,4 @@
-import { Station } from "../Station";
+import { Station } from "./Station";
 import { HexSides } from "../HexSides";
 
 export class Track {
@@ -6,10 +6,7 @@ export class Track {
     Station: Station;
 
     Rotate(): Track {
-        return {
-            ...this as any, 
-            Exits: this.Exits.Rotate()
-        };
+        return Object.assign(new Track(), this, { Exits: this.Exits.Rotate() });
     }
 
     HasSameExits(compareTo: Track[]): boolean {

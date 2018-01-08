@@ -13,7 +13,7 @@ export class Tile {
             rotatedTracks = rotatedTracks.map(t => t.Rotate());
         }
 
-        return { ...this as any, Tracks: rotatedTracks };
+        return Object.assign(new Tile(), this, { Tracks: rotatedTracks });
     }
 
     AllRotations(): Tile[] {
@@ -32,6 +32,8 @@ export class Tile {
         if (0 != this.PossibleUpgradeRotations(upgradeTo).length) {
             return false;
         }
+
+        return true;
     }
 
     PossibleUpgradeRotations(upgradeTo: Tile): Tile[] {
@@ -39,18 +41,18 @@ export class Tile {
     }
 
     HasSameExits(compareTo: Tile): boolean {
-        this.Tracks.every(t => t.HasSameExits(compareTo.Tracks));
+        return this.Tracks.every(t => t.HasSameExits(compareTo.Tracks));
     }
 
     CanUpgradeColour(upgradeTo: Tile): boolean {
         switch (this.Colour) {
             case Colour.Yellow:
                 return upgradeTo.Colour === Colour.Green;
-                case Colour.Green:
+            case Colour.Green:
                 return upgradeTo.Colour === Colour.Brown;
-                case Colour.Brown:
+            case Colour.Brown:
                 return upgradeTo.Colour === Colour.Grey;
-                default:
+            default:
                 return false; 
         }
     }
