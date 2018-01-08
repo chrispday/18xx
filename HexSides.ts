@@ -17,6 +17,10 @@ export class HexSides<T> {
         });
     }
 
+    AsArray() {
+        return [this.Top, this.LeftTop, this.LeftBottom, this.Bottom, this.RightBottom, this.RightTop];
+    }
+
     HasSame(item: HexSides<T>): boolean {
         if (!this.SideEqual(this.Top, item.Top)) {
             return false;
@@ -46,8 +50,7 @@ export class HexSides<T> {
     }
 
     SideEqual(side1: T, side2: T): boolean {
-        if ((side1 === undefined || side1 === null)
-        && (side2 === undefined || side2 === null)) {
+        if (side1 == null && side2 == null) {
             return true;
         }
 

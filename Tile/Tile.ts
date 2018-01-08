@@ -1,11 +1,13 @@
 import { Colour } from "../Colour";
 import { Track } from "./Track";
+import { Hex } from "../Board/Hex";
 
 export class Tile {
     Colour: Colour;
     Income: number;
     Tracks: Track[];
     Name?: string; // eg. Z, Chicago
+    Hex: Hex;
 
     Rotate(rotations: number = 1): Tile {
         let rotatedTracks = [...this.Tracks];
@@ -55,5 +57,17 @@ export class Tile {
             default:
                 return false; 
         }
+    }
+
+    CanReachHex(hex: Hex): boolean {
+        if (this.Hex.Row === hex.Row
+            && this.Hex.Column === hex.Column) {
+            return true;
+        }
+
+        return this.Hex.Neighbours
+            .AsArray()
+            .filter(neighbour => neighbour != null)
+            .filter(neighbour => )
     }
 } 
