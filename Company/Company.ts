@@ -11,8 +11,11 @@ export class Company {
     Stocks: Stock[];
     StockValue: number;
     ParValue: number;
+    Home: Hex;
 
     CanReachHex(hex: Hex): boolean {
-        return this.Tokens.some(token => token.Tile.CanReachHex(hex));
+        return this.Tokens
+            .filter(token => null != token.Tile)
+            .some(token => token.Tile.Hex.CanReachHex(hex));
     }
 }

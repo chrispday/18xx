@@ -59,15 +59,4 @@ export class Tile {
         }
     }
 
-    CanReachHex(hex: Hex): boolean {
-        if (this.Hex.Row === hex.Row
-            && this.Hex.Column === hex.Column) {
-            return true;
-        }
-
-        return this.Hex.Neighbours
-            .AsArray()
-            .filter(neighbour => neighbour != null)
-            .filter(neighbour => )
-    }
 } 
