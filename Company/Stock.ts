@@ -5,4 +5,5 @@ export class Stock {
     Company: Company;
     Player: Player;
     Shares: number;
+    President: boolean;
 }

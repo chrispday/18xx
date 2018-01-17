@@ -1,14 +1,23 @@
 import { Colour } from "../Colour";
 import { Track } from "./Track";
-import { Hex } from "../Board/Hex";
+import { HexSides } from "./HexSides";
 
 export class Tile {
+    Name?: string; // eg. Z, Chicago
     Colour: Colour;
     Income: number;
     Tracks: Track[];
-    Name?: string; // eg. Z, Chicago
-    Hex: Hex;
 
+    Row: string;
+    Column: string;
+    Neighbours: HexSides<Tile>;
+
+    Cost: number;
+    ExitCosts: HexSides<number>;
+
+    Equals(tile: Tile) : boolean {
+        return this.Row === tile.Row && this.Column === tile.Column; 
+    }
     Rotate(rotations: number = 1): Tile {
         let rotatedTracks = [...this.Tracks];
         while (0 < rotations--) {
@@ -19,7 +28,7 @@ export class Tile {
     }
 
     AllRotations(): Tile[] {
-        return [0, 1,2,3,4,5].map(i => this.Rotate(i));
+        return [0,1,2,3,4,5].map(i => this.Rotate(i));
     }
     
     CanUpgrade(upgradeTo: Tile): boolean {
@@ -46,8 +55,14 @@ export class Tile {
         return this.Tracks.every(t => t.HasSameExits(compareTo.Tracks));
     }
 
+    HasSomeExits(compareTo: Tile): boolean {
+        return this.Tracks.some(t => t.HasSameExits(compareTo.Tracks));
+    }
+
     CanUpgradeColour(upgradeTo: Tile): boolean {
         switch (this.Colour) {
+            case Colour.Board:
+                return upgradeTo.Colour === Colour.Yellow;
             case Colour.Yellow:
                 return upgradeTo.Colour === Colour.Green;
             case Colour.Green:
@@ -58,5 +73,4 @@ export class Tile {
                 return false; 
         }
     }
-
 } 

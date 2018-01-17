@@ -1,7 +1,7 @@
-import { Token } from "../Token";
+import { Token } from "./Token";
 import { Train } from "../Train";
 import { Stock } from "./Stock";
-import { Hex } from "../Board/Hex";
+import { Tile } from "../Board/Tile";
 
 export class Company {
     Name: string;
@@ -11,11 +11,5 @@ export class Company {
     Stocks: Stock[];
     StockValue: number;
     ParValue: number;
-    Home: Hex;
-
-    CanReachHex(hex: Hex): boolean {
-        return this.Tokens
-            .filter(token => null != token.Tile)
-            .some(token => token.Tile.Hex.CanReachHex(hex));
-    }
+    Home: Tile;
 }

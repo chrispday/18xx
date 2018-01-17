@@ -1,7 +1,6 @@
-import { Hex } from "./Hex";
+import { Tile } from "./Tile";
 
 export class Board {
     Name: string;
-    Hexes: Hex[];
-    TopLeftHex: Hex;
+    Tiles: Tile[];
 }
