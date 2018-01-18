@@ -1,6 +1,7 @@
 import { Colour } from "../Colour";
 import { Track } from "./Track";
 import { HexSides } from "./HexSides";
+import { HexSide } from "./HexSide";
 
 export class Tile {
     Name?: string; // eg. Z, Chicago
@@ -72,5 +73,10 @@ export class Tile {
             default:
                 return false; 
         }
+    }
+
+    ConnectedTrack(track: Track): Track {
+        const connectedTracks = this.Tracks.filter(t => track.IsConnected(t));
+        return 0 === connectedTracks.length ? null : connectedTracks[0];
     }
 } 

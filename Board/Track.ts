@@ -16,6 +16,8 @@ export class Track {
     }
 
     IsConnected(track: Track): boolean {
-        
+        return this.Exits.AsArray()
+            .filter(exit => exit.item)
+            .some(exit => this.Exits.HasOpposite(track.Exits, exit.side));
     }
 }

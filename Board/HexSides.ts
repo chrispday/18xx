@@ -1,20 +1,20 @@
 import { HexSide } from "./HexSide";
 
 export class HexSides<T> {
-    Sides: { [side in HexSide]: T };
+    Sides: {[side in HexSide]: T };
 
     Rotate(): HexSides<T> {
-        return Object.assign(new HexSides<T>(), { ...this.Sides});
+        return Object.assign(new HexSides<T>(), { ...this.Sides });
     }
 
-    AsArray(): T[] {
+    AsArray(): { side: HexSide, item:T }[] {
         return [
-            this.Sides[HexSide.Top], 
-            this.Sides[HexSide.LeftTop], 
-            this.Sides[HexSide.LeftBottom], 
-            this.Sides[HexSide.Bottom], 
-            this.Sides[HexSide.RightBottom], 
-            this.Sides[HexSide.RightTop]
+            { side: HexSide.Top, item: this.Sides[HexSide.Top] },
+            { side: HexSide.LeftTop, item: this.Sides[HexSide.LeftTop] },
+            { side: HexSide.LeftBottom, item: this.Sides[HexSide.LeftBottom] },
+            { side: HexSide.Bottom, item: this.Sides[HexSide.Bottom] },
+            { side: HexSide.RightBottom, item: this.Sides[HexSide.RightBottom] },
+            { side: HexSide.RightTop, item: this.Sides[HexSide.RightTop] }
         ];
     }
 
@@ -46,9 +46,20 @@ export class HexSides<T> {
         return true;
     }
 
-    OppositeEqual(hexSides: HexSides<T>, side: HexSide): boolean {
+    HasOpposite(hexSides: HexSides<T>, side: HexSide): boolean {
         switch (side) {
-            
+            case HexSide.Top:
+                return this.SideEqual(this.Sides[side], hexSides[HexSide.Bottom]);
+            case HexSide.RightTop:
+                return this.SideEqual(this.Sides[side], hexSides[HexSide.LeftBottom]);
+            case HexSide.RightBottom:
+                return this.SideEqual(this.Sides[side], hexSides[HexSide.LeftTop]);
+            case HexSide.Bottom:
+                return this.SideEqual(this.Sides[side], hexSides[HexSide.Top]);
+            case HexSide.LeftBottom:
+                return this.SideEqual(this.Sides[side], hexSides[HexSide.RightTop]);
+            case HexSide.LeftTop:
+                return this.SideEqual(this.Sides[side], hexSides[HexSide.RightBottom]);
         }
     }
 
