@@ -9,20 +9,20 @@ export class Tile {
     Income: number;
     Tracks: Track[];
 
-    Row: string;
-    Column: string;
+    Id: string;
     Neighbours: HexSides<Tile>;
 
     Cost: number;
     ExitCosts: HexSides<number>;
 
     Equals(tile: Tile) : boolean {
-        return this.Row === tile.Row && this.Column === tile.Column; 
+        return this.Id === tile.Id; 
     }
+    
     Rotate(rotations: number = 1): Tile {
         let rotatedTracks = [...this.Tracks];
         while (0 < rotations--) {
-            rotatedTracks = rotatedTracks.map(t => t.Rotate());
+            rotatedTracks = rotatedTracks.map(t => t.RotateClockwise());
         }
 
         return Object.assign(new Tile(), this, { Tracks: rotatedTracks });

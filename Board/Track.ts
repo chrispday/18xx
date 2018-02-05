@@ -7,8 +7,8 @@ export class Track {
     Station: Station;
     Tile: Tile;
 
-    Rotate(): Track {
-        return Object.assign(new Track(), this, { Exits: this.Exits.Rotate() });
+    RotateClockwise(): Track {
+        return Object.assign(new Track(), this, { Exits: this.Exits.RotateClockwise() });
     }
 
     HasSameExits(compareTo: Track[]): boolean {

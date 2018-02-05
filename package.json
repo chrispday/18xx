@@ -1,0 +1,36 @@
+{
+  "name": "18xx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "typescript": "^2.7.1",
+    "jest": "^22.1.4"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrispday/18xx.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrispday/18xx/issues"
+  },
+  "homepage": "https://github.com/chrispday/18xx#readme",
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "./node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "\\.test.(ts|tsx|js)$"
+  }
+}

@@ -1,10 +1,22 @@
 import { HexSide } from "./HexSide";
 
+type Sides<T> = {[side in HexSide]: T };
 export class HexSides<T> {
-    Sides: {[side in HexSide]: T };
+    Sides: Sides<T>;
 
-    Rotate(): HexSides<T> {
-        return Object.assign(new HexSides<T>(), { ...this.Sides });
+    constructor() {
+        this.Sides = {} as Sides<T>;
+    }
+
+    RotateClockwise(): HexSides<T> {
+        let rotated = new HexSides<T>();
+        rotated.Sides[HexSide.Top] = this.Sides[HexSide.LeftTop];
+        rotated.Sides[HexSide.RightTop] = this.Sides[HexSide.Top];
+        rotated.Sides[HexSide.RightBottom] = this.Sides[HexSide.RightTop];
+        rotated.Sides[HexSide.Bottom] = this.Sides[HexSide.RightBottom];
+        rotated.Sides[HexSide.LeftBottom] = this.Sides[HexSide.Bottom];
+        rotated.Sides[HexSide.LeftTop] = this.Sides[HexSide.LeftBottom];
+        return rotated;
     }
 
     AsArray(): { side: HexSide, item:T }[] {
