@@ -53,11 +53,11 @@ export class Tile {
     }
 
     HasSameExits(compareTo: Tile): boolean {
-        return this.Tracks.every(t => t.HasSameExits(compareTo.Tracks));
+        return this.Tracks.every(t => t.HasSomeExitsSame(compareTo.Tracks));
     }
 
     HasSomeExits(compareTo: Tile): boolean {
-        return this.Tracks.some(t => t.HasSameExits(compareTo.Tracks));
+        return this.Tracks.some(t => t.HasSomeExitsSame(compareTo.Tracks));
     }
 
     CanUpgradeColour(upgradeTo: Tile): boolean {

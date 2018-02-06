@@ -7,11 +7,15 @@ export class Track {
     Station: Station;
     Tile: Tile;
 
+    constructor() {
+        this.Exits = new HexSides<boolean>();
+    }
+
     RotateClockwise(): Track {
         return Object.assign(new Track(), this, { Exits: this.Exits.RotateClockwise() });
     }
 
-    HasSameExits(compareTo: Track[]): boolean {
+    HasSomeExitsSame(compareTo: Track[]): boolean {
         return compareTo.some(t => this.Exits.HasSame(t.Exits));
     }
 
