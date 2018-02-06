@@ -22,11 +22,11 @@ export class HexSides<T> {
     AsArray(): { side: HexSide, item:T }[] {
         return [
             { side: HexSide.Top, item: this.Sides[HexSide.Top] },
-            { side: HexSide.LeftTop, item: this.Sides[HexSide.LeftTop] },
-            { side: HexSide.LeftBottom, item: this.Sides[HexSide.LeftBottom] },
-            { side: HexSide.Bottom, item: this.Sides[HexSide.Bottom] },
+            { side: HexSide.RightTop, item: this.Sides[HexSide.RightTop] },
             { side: HexSide.RightBottom, item: this.Sides[HexSide.RightBottom] },
-            { side: HexSide.RightTop, item: this.Sides[HexSide.RightTop] }
+            { side: HexSide.Bottom, item: this.Sides[HexSide.Bottom] },
+            { side: HexSide.LeftBottom, item: this.Sides[HexSide.LeftBottom] },
+            { side: HexSide.LeftTop, item: this.Sides[HexSide.LeftTop] }
         ];
     }
 
@@ -51,7 +51,7 @@ export class HexSides<T> {
             return false;
         }
 
-        if (!this.SideEqual(this.Sides[HexSide.RightBottom], item.Sides[HexSide.RightBottom])) {
+        if (!this.SideEqual(this.Sides[HexSide.RightTop], item.Sides[HexSide.RightTop])) {
             return false;
         }
 
@@ -75,7 +75,7 @@ export class HexSides<T> {
         }
     }
 
-    SideEqual(side1: T, side2: T): boolean {
+    private SideEqual(side1: T, side2: T): boolean {
         if (side1 == null && side2 == null) {
             return true;
         }
