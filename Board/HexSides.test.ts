@@ -114,17 +114,17 @@ describe("HexSides", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.Top] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.Bottom] = "Same";
+                y.Sides[HexSide.Bottom] = "Same";
                 
-                expect(x.HasOpposite(y, HexSide.Top));
+                expect(x.HasOpposite(y, HexSide.Top)).toBe(true);
             });
             it("Different", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.Top] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.Bottom] = "Different";
+                y.Sides[HexSide.Bottom] = "Different";
                 
-                expect(x.HasOpposite(y, HexSide.Top));
+                expect(x.HasOpposite(y, HexSide.Top)).toBe(false);
             });
         });
         describe("RightTop/LeftBottom", () => {
@@ -132,17 +132,17 @@ describe("HexSides", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.RightTop] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.LeftBottom] = "Same";
+                y.Sides[HexSide.LeftBottom] = "Same";
                 
-                expect(x.HasOpposite(y, HexSide.RightTop));
+                expect(x.HasOpposite(y, HexSide.RightTop)).toBe(true);
             });
             it("Different", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.RightTop] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.LeftBottom] = "Different";
+                y.Sides[HexSide.LeftBottom] = "Different";
                 
-                expect(x.HasOpposite(y, HexSide.RightTop));
+                expect(x.HasOpposite(y, HexSide.RightTop)).toBe(false);
             });
         });
         describe("LeftTop/RightBottom", () => {
@@ -150,17 +150,17 @@ describe("HexSides", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.LeftTop] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.RightBottom] = "Same";
+                y.Sides[HexSide.RightBottom] = "Same";
                 
-                expect(x.HasOpposite(y, HexSide.LeftTop));
+                expect(x.HasOpposite(y, HexSide.LeftTop)).toBe(true);
             });
             it("Different", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.LeftTop] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.RightBottom] = "Different";
+                y.Sides[HexSide.RightBottom] = "Different";
                 
-                expect(x.HasOpposite(y, HexSide.LeftTop));
+                expect(x.HasOpposite(y, HexSide.LeftTop)).toBe(false);
             });
         });
         describe("Bottom/Top", () => {
@@ -168,17 +168,17 @@ describe("HexSides", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.Bottom] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.Top] = "Same";
+                y.Sides[HexSide.Top] = "Same";
                 
-                expect(x.HasOpposite(y, HexSide.Bottom));
+                expect(x.HasOpposite(y, HexSide.Bottom)).toBe(true);
             });
             it("Different", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.Bottom] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.Top] = "Different";
+                y.Sides[HexSide.Top] = "Different";
                 
-                expect(x.HasOpposite(y, HexSide.Bottom));
+                expect(x.HasOpposite(y, HexSide.Bottom)).toBe(false);
             });
         });
         describe("RightBottom/LeftTop", () => {
@@ -186,17 +186,17 @@ describe("HexSides", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.RightBottom] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.LeftTop] = "Same";
+                y.Sides[HexSide.LeftTop] = "Same";
                 
-                expect(x.HasOpposite(y, HexSide.RightBottom));
+                expect(x.HasOpposite(y, HexSide.RightBottom)).toBe(true);
             });
             it("Different", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.RightBottom] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.LeftTop] = "Different";
+                y.Sides[HexSide.LeftTop] = "Different";
                 
-                expect(x.HasOpposite(y, HexSide.RightBottom));
+                expect(x.HasOpposite(y, HexSide.RightBottom)).toBe(false);
             });
         });
         describe("LeftBottom/RightTop", () => {
@@ -204,17 +204,17 @@ describe("HexSides", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.LeftBottom] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.RightTop] = "Same";
+                y.Sides[HexSide.RightTop] = "Same";
                 
-                expect(x.HasOpposite(y, HexSide.LeftBottom));
+                expect(x.HasOpposite(y, HexSide.LeftBottom)).toBe(true);
             });
             it("Different", () => {
                 const x = new HexSides<string>();
                 x.Sides[HexSide.LeftBottom] = "Same";
                 const y = new HexSides<string>();
-                x.Sides[HexSide.RightTop] = "Different";
+                y.Sides[HexSide.RightTop] = "Different";
                 
-                expect(x.HasOpposite(y, HexSide.LeftBottom));
+                expect(x.HasOpposite(y, HexSide.LeftBottom)).toBe(false);
             });
         });
     });

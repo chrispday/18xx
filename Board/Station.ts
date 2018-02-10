@@ -7,8 +7,17 @@ export class Station {
     Tokens: Token[];
     Track: Track;
 
+    constructor(count: number) {
+        this.Count = count;
+        this.Tokens = [];
+    }
+
     CanPassThrough(company: Company): boolean {
         if (0 === this.Count) {
+            return true;
+        }
+
+        if (this.Count > this.Tokens.length) {
             return true;
         }
 

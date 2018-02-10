@@ -1,6 +1,7 @@
 import { HexSide } from "./HexSide";
 
 type Sides<T> = {[side in HexSide]: T };
+
 export class HexSides<T> {
     Sides: Sides<T>;
 
@@ -61,17 +62,17 @@ export class HexSides<T> {
     HasOpposite(hexSides: HexSides<T>, side: HexSide): boolean {
         switch (side) {
             case HexSide.Top:
-                return this.SideEqual(this.Sides[side], hexSides[HexSide.Bottom]);
+                return this.SideEqual(this.Sides[side], hexSides.Sides[HexSide.Bottom]);
             case HexSide.RightTop:
-                return this.SideEqual(this.Sides[side], hexSides[HexSide.LeftBottom]);
+                return this.SideEqual(this.Sides[side], hexSides.Sides[HexSide.LeftBottom]);
             case HexSide.RightBottom:
-                return this.SideEqual(this.Sides[side], hexSides[HexSide.LeftTop]);
+                return this.SideEqual(this.Sides[side], hexSides.Sides[HexSide.LeftTop]);
             case HexSide.Bottom:
-                return this.SideEqual(this.Sides[side], hexSides[HexSide.Top]);
+                return this.SideEqual(this.Sides[side], hexSides.Sides[HexSide.Top]);
             case HexSide.LeftBottom:
-                return this.SideEqual(this.Sides[side], hexSides[HexSide.RightTop]);
+                return this.SideEqual(this.Sides[side], hexSides.Sides[HexSide.RightTop]);
             case HexSide.LeftTop:
-                return this.SideEqual(this.Sides[side], hexSides[HexSide.RightBottom]);
+                return this.SideEqual(this.Sides[side], hexSides.Sides[HexSide.RightBottom]);
         }
     }
 

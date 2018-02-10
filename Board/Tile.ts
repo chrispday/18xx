@@ -15,6 +15,12 @@ export class Tile {
     Cost: number;
     ExitCosts: HexSides<number>;
 
+    constructor() {
+        this.Tracks = [];
+        this.Neighbours = new HexSides<Tile>();
+        this.ExitCosts = new HexSides<number>();
+    }
+
     Equals(tile: Tile) : boolean {
         return this.Id === tile.Id; 
     }
